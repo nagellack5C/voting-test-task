@@ -120,7 +120,3 @@ def list_votings():
     for result in results:
         result['voting']["_id"] = str(result['voting']["_id"])
     return json.dumps(results)
-
-
-if __name__ == "__main__":
-    app.run()
