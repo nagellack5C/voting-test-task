@@ -8,7 +8,11 @@ from bson.errors import InvalidId
 
 '''CONFIG'''
 
-client = MongoClient("127.0.0.1", 27017)
+MONGO_URL = "ds057568.mlab.com"
+MONGO_PORT = 57568
+USERNAME = 'testtest'
+PASSWORD = '1amtesting'
+client = MongoClient(f'mongodb://{USERNAME}:{PASSWORD}@ds057568.mlab.com:57568/voting-service?retryWrites=false')
 mydb = client["voting-service"]
 votings = mydb["votings"]
 users = mydb["users"]

@@ -36,7 +36,7 @@ def create_test_users():
 
 
 if __name__ == "__main__":
-    start()
+    # start()
 
     create_test_users()
     create_test_votes()
@@ -97,6 +97,3 @@ if __name__ == "__main__":
     dlv = db_list_votings()
     for i in dlv:
         print(i)
-
-
-    # clean_all()
