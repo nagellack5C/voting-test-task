@@ -1,7 +1,7 @@
 import json
 from flask import Flask, request, make_response
 from flask_httpauth import HTTPBasicAuth
-from .db_client import *
+from db_client import *
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
@@ -120,3 +120,7 @@ def list_votings():
     for result in results:
         result['voting']["_id"] = str(result['voting']["_id"])
     return json.dumps(results)
+
+
+if __name__ == "__main__":
+    app.run()
