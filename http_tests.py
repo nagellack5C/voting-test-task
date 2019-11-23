@@ -4,7 +4,7 @@ import requests
 AUTH = ('test_user', 'test_password')
 TEST_QUESTION = 'Ein zwei Polizei?'
 TEST_OPTIONS = ['Drei vier Grenadier', 'Funf sechs alte Kex', 'Sieben acht Gute Nacht']
-SERVER_URL = 'http://127.0.0.1:5000/'
+SERVER_URL = 'https://flask-vote-test.herokuapp.com/'
 voting_id = None
 my_vote_id = None
 
