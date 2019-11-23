@@ -1,5 +1,6 @@
 import pymongo
 
+'''CONFIG'''
 
 MONGO_URL = "ds057568.mlab.com"
 MONGO_PORT = 57568
