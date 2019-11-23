@@ -1,6 +1,4 @@
 import requests
-from random import randint
-from db_client import db_delete_voting
 
 
 AUTH = ('test_user', 'test_password')
