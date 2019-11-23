@@ -27,6 +27,8 @@ def create_voting():
             request.json['options'],
             auth.username()
         )
+        if voting_id == "bad_request":
+            return "Bad data in request!", 400
         return f"Vote with id {voting_id} created!", 201
     except KeyError:
         return 'You have not provided the necessary form data!', 400

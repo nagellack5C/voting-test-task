@@ -31,6 +31,10 @@ def db_create_voting(question: str, options: list, creator: str):
         "options": options,
         "creator": creator
     }
+    if type(question) != str or type(options) != list\
+            or len(options) < 2 or any(type(i) != str for i in options
+            or type(creator) !=  str):
+        return "bad_request"
     return str(votings.insert_one(voting).inserted_id)
 
 
