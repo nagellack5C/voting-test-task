@@ -6,13 +6,14 @@ from db_client import db_delete_voting
 AUTH = ('test_user', 'test_password')
 TEST_QUESTION = 'Ein zwei Polizei?'
 TEST_OPTIONS = ['Drei vier Grenadier', 'Funf sechs alte Kex', 'Sieben acht Gute Nacht']
+SERVER_URL = 'http://127.0.0.1:5000/'
 voting_id = None
 my_vote_id = None
 
 
 print('Showing votings w/o auth...')
 resp = requests.get(
-    "http://127.0.0.1:5000/list-votings",
+    f"{SERVER_URL}list-votings",
     auth=AUTH
 )
 
@@ -27,7 +28,7 @@ print(f'Will vote for: {voting["question"]}')
 
 print('Creating a user...')
 resp = requests.post(
-    "http://127.0.0.1:5000/create-user",
+    f"{SERVER_URL}create-user",
     json={
         'username': AUTH[0],
         'password': AUTH[1]
@@ -42,7 +43,7 @@ print('\n')
 
 print('Creating a voting...')
 resp = requests.post(
-    "http://127.0.0.1:5000/create-voting",
+    f"{SERVER_URL}create-voting",
     json={
         'question': TEST_QUESTION,
         'options': TEST_OPTIONS
@@ -60,7 +61,7 @@ my_vote_id = resp.text.split(" ")[3]
 
 print(f'Voting in the new voting... I choose {TEST_OPTIONS[0]}')
 resp = requests.post(
-    f"http://127.0.0.1:5000/vote/{my_vote_id}",
+    f"{SERVER_URL}vote/{my_vote_id}",
     json={
         'option': TEST_OPTIONS[0]
     },
@@ -75,7 +76,7 @@ print('\n')
 
 print('Getting votings...')
 resp = requests.get(
-    "http://127.0.0.1:5000/list-votings",
+    f"{SERVER_URL}list-votings",
     auth=AUTH
 )
 
@@ -87,7 +88,7 @@ print('\n')
 
 print(f'Revoting... I choose {TEST_OPTIONS[1]}')
 resp = requests.post(
-    f"http://127.0.0.1:5000/vote/{my_vote_id}",
+    f"{SERVER_URL}vote/{my_vote_id}",
     json={
         'option': TEST_OPTIONS[1]
     },
@@ -102,7 +103,7 @@ print('\n')
 
 print('Getting votings...')
 resp = requests.get(
-    "http://127.0.0.1:5000/list-votings",
+    f"{SERVER_URL}list-votings",
     auth=AUTH
 )
 
@@ -116,7 +117,7 @@ print('\n')
 
 print(f'Just viewing a voting...')
 resp = requests.get(
-    f"http://127.0.0.1:5000/vote/{my_vote_id}",
+    f"{SERVER_URL}vote/{my_vote_id}",
     auth=AUTH
 )
 
@@ -131,7 +132,7 @@ print(f'Changing my voting... I replace {TEST_OPTIONS[1]} with \'Nichts\'')
 TEST_OPTIONS.pop(1)
 TEST_OPTIONS.append('Nichts')
 resp = requests.post(
-    f"http://127.0.0.1:5000/update-voting/{my_vote_id}",
+    f"{SERVER_URL}update-voting/{my_vote_id}",
     json={
         'question': '',
         'options': TEST_OPTIONS
@@ -153,7 +154,7 @@ print('\n')
 
 print('Getting votings...')
 resp = requests.get(
-    "http://127.0.0.1:5000/list-votings",
+    f"{SERVER_URL}list-votings",
     auth=AUTH
 )
 
@@ -166,7 +167,7 @@ print('\n')
 
 print(f'Just viewing a voting...')
 resp = requests.get(
-    f"http://127.0.0.1:5000/vote/{my_vote_id}",
+    f"{SERVER_URL}vote/{my_vote_id}",
     auth=AUTH
 )
 
@@ -178,7 +179,7 @@ print('\n')
 
 print(f'Deleting my voting...')
 resp = requests.get(
-    f"http://127.0.0.1:5000/delete-voting/{my_vote_id}",
+    f"{SERVER_URL}delete-voting/{my_vote_id}",
     auth=AUTH
 )
 
@@ -190,7 +191,7 @@ print('\n')
 
 print('Getting votings...')
 resp = requests.get(
-    "http://127.0.0.1:5000/list-votings"
+    f"{SERVER_URL}list-votings"
 )
 
 print('Votings on server:')
